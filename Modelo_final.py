@@ -6,3 +6,9 @@ url = (r"D:\3_Especialización_en_ciencia_de_datos\2. material de clase, cursos 
 df_ppal = pd.read_csv(url)
 
 print(df_ppal.head)
+
+print(df_ppal.columns)
+
+print(df_ppal.describe)
+
+print(df_ppal.info)
