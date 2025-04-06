@@ -2,5 +2,11 @@
  x = "hola python"
  
  print(x)
-git
+gix = hol
 
+
+##3###33
+
+ZDGNZDGMDMGFSGM
+
+EGweg
