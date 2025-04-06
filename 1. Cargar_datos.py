@@ -6,7 +6,6 @@ ruta_csv = Path("Churn_Modelling/Churn_Modelling.csv")
 
 # Cargar el CSV
 df_ppal = pd.read_csv(ruta_csv)
-print(df_ppal.head())
 
 
 print(df_ppal.head)
