@@ -67,6 +67,8 @@ print("-------------------------------------------------------------------------
 # fase exploratoria de los datos 
 
 import sweetviz as sv
+import numpy as np
+import pandas as pd
 
 # reporte = sv.analyze(df_ppal) # Crea el reporte automático
 
@@ -110,14 +112,36 @@ print(f"Clientes activos en el banco: {clientes_activos.sum()}")
 
 print(df_ppal['Geography'].value_counts())
 
+lista_age = df_ppal["Age"].unique().tolist()
+
+print(lista_age)
+
+# con la columna "Age" se crea una columna "agegroup" para formar rangos de edad
+
+bins = [17, 25, 35, 45, 55, 65, 75, 100]
+
+labels = ['18-25', '26-35', '36-45', '46-55', '56-65', '66-75', '76+']
+
+df_ppal['AgeGroup'] = pd.cut(df_ppal['Age'], bins=bins, labels=labels, right=True)
+
+print(df_ppal.head())
 
 # print(df_ppal['Age'].hist())
+
+
 
 
 # Análisis Bivariado (Variable vs. Exited)
 
 import seaborn as sns
 
+import plotly.express as px
+
 import matplotlib.pyplot as plt
 
-sns.boxplot(x='Exited', y='Age', data=df_ppal)
+import pandas as pd
+import plotly.express as px
+
+fig = px.histogram(df_ppal, x = "Exited", color = "AgeGroup")
+
+fig.show()
