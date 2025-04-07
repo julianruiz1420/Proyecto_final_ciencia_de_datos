@@ -95,17 +95,29 @@ df_ppal["Exited"] = df_ppal["Exited"].astype("bool")
 # Analisis univariado
 
 
-print(df_ppal["Exited"].value_counts())
+# print(df_ppal["Exited"].value_counts())
+
+
+# La cantidad de clientes registrados en la base de datos como activos o inactivos en el banco
 
 clientes_abandonaron = df_ppal["Exited"]== True
 
 clientes_activos = df_ppal['Exited'] == False
 
-print(df_ppal["Exited"].value_counts())
+print(f"Clientes que abandonaron el banco: {clientes_abandonaron.sum()}") # 
 
-# La cantidad de clientes registrados en la base de datos como activos o inactivos en el banco
-
-print(f"Clientes que abandonaron el banco: {clientes_abandonaron.sum()}")
 print(f"Clientes activos en el banco: {clientes_activos.sum()}")
 
+print(df_ppal['Geography'].value_counts())
 
+
+# print(df_ppal['Age'].hist())
+
+
+# Análisis Bivariado (Variable vs. Exited)
+
+import seaborn as sns
+
+import matplotlib.pyplot as plt
+
+sns.boxplot(x='Exited', y='Age', data=df_ppal)
