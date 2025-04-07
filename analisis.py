@@ -9,11 +9,10 @@ from cargar_datos import cargar_df_ppal
 
 df_ppal = cargar_df_ppal()
 
-print(df_ppal.head())
+print(df_ppal.head)
 
-
-
-"""Proyecto Final: Análisis Exploratorio de Pérdida de Clientes (CHURN)
+"""
+Proyecto Final: Análisis Exploratorio de Pérdida de Clientes (CHURN)
 En el sector bancario, la pérdida de clientes (churn) representa un desafío significativo,
 ya que implica pérdidas financieras y disminución de la satisfacción del cliente. 
 Este proyecto se centra en realizar un análisis exploratorio de datos exhaustivo para 
@@ -61,7 +60,6 @@ ingresos del cliente, relevante para analizar la relación entre el poder adquis
 Exited: Indicador que señala si el cliente ha abandonado
 (1) o se ha quedado (0) en el banco, siendo la variable de interés para analizar el churn."""
 
-
 print("-------------------------------------------------------------------------------")
 
 # fase exploratoria de los datos 
@@ -79,11 +77,8 @@ print(df_ppal.dtypes['Exited'])
 
 print(df_ppal.info())
 
-print(df_ppal.head)
-
 print(df_ppal.describe())
 
-print(df_ppal.info())
 
 
 # limpieza y transformación de datos
@@ -93,11 +88,13 @@ del df_ppal["Surname"] # eliminia la columna Surname
 
 df_ppal["Exited"] = df_ppal["Exited"].astype("bool")
 
+print(df_ppal.info())
+
 
 # Analisis univariado
 
 
-# print(df_ppal["Exited"].value_counts())
+print(df_ppal["Exited"].value_counts())
 
 
 # La cantidad de clientes registrados en la base de datos como activos o inactivos en el banco
@@ -110,13 +107,19 @@ print(f"Clientes que abandonaron el banco: {clientes_abandonaron.sum()}") #
 
 print(f"Clientes activos en el banco: {clientes_activos.sum()}")
 
+
+# analisi de variable Geography
+
 print(df_ppal['Geography'].value_counts())
+
+# analisi de variable Age
 
 lista_age = df_ppal["Age"].unique().tolist()
 
 print(lista_age)
 
-# con la columna "Age" se crea una columna "agegroup" para formar rangos de edad
+
+# con la columna "Age" se crea una columna "Agegroup" para formar rangos de edad
 
 bins = [17, 25, 35, 45, 55, 65, 75, 100]
 
@@ -125,10 +128,6 @@ labels = ['18-25', '26-35', '36-45', '46-55', '56-65', '66-75', '76+']
 df_ppal['AgeGroup'] = pd.cut(df_ppal['Age'], bins=bins, labels=labels, right=True)
 
 print(df_ppal.head())
-
-# print(df_ppal['Age'].hist())
-
-
 
 
 # Análisis Bivariado (Variable vs. Exited)
@@ -139,9 +138,7 @@ import plotly.express as px
 
 import matplotlib.pyplot as plt
 
-import pandas as pd
-import plotly.express as px
 
 fig = px.histogram(df_ppal, x = "Exited", color = "AgeGroup")
 
-fig.show()
+fig.show() 

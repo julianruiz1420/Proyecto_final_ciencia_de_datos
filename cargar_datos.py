@@ -14,5 +14,3 @@ def cargar_df_ppal():
         raise FileNotFoundError(f"No se encontró el archivo en: {ruta_csv}")
     
     return pd.read_csv(ruta_csv)
-
-
