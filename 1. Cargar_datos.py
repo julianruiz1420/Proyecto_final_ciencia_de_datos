@@ -12,3 +12,4 @@ print(df_ppal.head)
 print(df_ppal.describe())
 
 print(df_ppal.info())
+
