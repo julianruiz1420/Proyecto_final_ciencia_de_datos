@@ -11,5 +11,5 @@ print(df_ppal.head)
 
 print(df_ppal.describe())
 
-print(df_ppal.info())
+print(df_ppal.info())   
 
