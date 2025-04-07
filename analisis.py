@@ -64,26 +64,48 @@ Exited: Indicador que señala si el cliente ha abandonado
 
 print("-------------------------------------------------------------------------------")
 
-del df_ppal["Surname"] # eliminia la columna Surname
-
-print(df_ppal.head)
-
-print(df_ppal.describe())
-
-# print(df_ppal.info())
+# fase exploratoria de los datos 
 
 import sweetviz as sv
 
-df_ppal["Exited"] = df_ppal["Exited"].astype("bool")
+# reporte = sv.analyze(df_ppal) # Crea el reporte automático
+
+# reporte.show_html("reporte_churn.html") # Guarda el HTML
+
 
 print(df_ppal.dtypes['Exited'])
 
 print(df_ppal.info())
 
-reporte = sv.analyze(df_ppal) # Crea el reporte automático
+print(df_ppal.head)
+
+print(df_ppal.describe())
+
+print(df_ppal.info())
 
 
-reporte.show_html("reporte_churn.html") # Guarda el HTML
+# limpieza y transformación de datos
+
+
+del df_ppal["Surname"] # eliminia la columna Surname
+
+df_ppal["Exited"] = df_ppal["Exited"].astype("bool")
+
+
+# Analisis univariado
 
 
 print(df_ppal["Exited"].value_counts())
+
+clientes_abandonaron = df_ppal["Exited"]== True
+
+clientes_activos = df_ppal['Exited'] == False
+
+print(df_ppal["Exited"].value_counts())
+
+# La cantidad de clientes registrados en la base de datos como activos o inactivos en el banco
+
+print(f"Clientes que abandonaron el banco: {clientes_abandonaron.sum()}")
+print(f"Clientes activos en el banco: {clientes_activos.sum()}")
+
+
