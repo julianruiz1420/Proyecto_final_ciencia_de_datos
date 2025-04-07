@@ -11,9 +11,6 @@ df_ppal = cargar_df_ppal()
 
 print(df_ppal.head())
 
-print(df_ppal.describe())
-
-print(df_ppal.info())
 
 
 """Proyecto Final: Análisis Exploratorio de Pérdida de Clientes (CHURN)
@@ -57,13 +54,36 @@ HasCrCard: Variable binaria que indica si el cliente posee una tarjeta de crédi
 
 IsActiveMember: Variable binaria que señala si el cliente es un miembro activo del banco
 (1) o no (0), lo cual puede estar relacionado con su fidelidad.
-Docente: David Palacio Jiménez
-Curso: Introducción a la ciencia de datos
 
 EstimatedSalary: Aproximación del nivel de 
 ingresos del cliente, relevante para analizar la relación entre el poder adquisitivo y la propensión a abandonar el banco.
 
 Exited: Indicador que señala si el cliente ha abandonado
 (1) o se ha quedado (0) en el banco, siendo la variable de interés para analizar el churn."""
+
+
 print("-------------------------------------------------------------------------------")
+
+del df_ppal["Surname"] # eliminia la columna Surname
+
 print(df_ppal.head)
+
+print(df_ppal.describe())
+
+# print(df_ppal.info())
+
+import sweetviz as sv
+
+df_ppal["Exited"] = df_ppal["Exited"].astype("bool")
+
+print(df_ppal.dtypes['Exited'])
+
+print(df_ppal.info())
+
+reporte = sv.analyze(df_ppal) # Crea el reporte automático
+
+
+reporte.show_html("reporte_churn.html") # Guarda el HTML
+
+
+print(df_ppal["Exited"].value_counts())
